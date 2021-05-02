@@ -7,6 +7,6 @@ interface ExpressContext {
 
 export interface Context extends ExpressContext {}
 
-export const createContext = (ctx: ExpressContext): Context => {
+export const context = (ctx: ExpressContext): Context => {
   return ctx;
 };
