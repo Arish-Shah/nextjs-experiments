@@ -17,7 +17,8 @@ export const typeDefs = gql`
     id: ID!
     email: String!
     username: String!
-    tweets(input: PaginationInput!): TweetResponse
+    profile: String
+    tweets(input: PaginationInput!): PaginatedTweets
     createdAt: Date!
   }
 
@@ -29,7 +30,7 @@ export const typeDefs = gql`
     createdAt: Date!
   }
 
-  type TweetResponse {
+  type PaginatedTweets {
     tweets: [Tweet!]!
     hasMore: Boolean!
   }

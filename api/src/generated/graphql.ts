@@ -38,11 +38,18 @@ export type MutationSigninArgs = {
 
 export type MutationCreateTweetArgs = {
   text: Scalars['String'];
+  parentId?: Maybe<Scalars['ID']>;
 };
 
 
 export type MutationDeleteTweetArgs = {
   tweetId: Scalars['ID'];
+};
+
+export type PaginatedTweets = {
+  __typename?: 'PaginatedTweets';
+  tweets: Array<Tweet>;
+  hasMore: Scalars['Boolean'];
 };
 
 export type PaginationInput = {
@@ -67,13 +74,13 @@ export type Tweet = {
   text: Scalars['String'];
   creatorId: Scalars['String'];
   creator?: Maybe<User>;
+  replies?: Maybe<PaginatedTweets>;
   createdAt: Scalars['Date'];
 };
 
-export type TweetResponse = {
-  __typename?: 'TweetResponse';
-  tweets: Array<Tweet>;
-  hasMore: Scalars['Boolean'];
+
+export type TweetRepliesArgs = {
+  input: PaginationInput;
 };
 
 export type User = {
@@ -81,7 +88,8 @@ export type User = {
   id: Scalars['ID'];
   email: Scalars['String'];
   username: Scalars['String'];
-  tweets?: Maybe<TweetResponse>;
+  profile?: Maybe<Scalars['String']>;
+  tweets?: Maybe<PaginatedTweets>;
   createdAt: Scalars['Date'];
 };
 
@@ -173,12 +181,12 @@ export type ResolversTypes = {
   String: ResolverTypeWrapper<Scalars['String']>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
+  PaginatedTweets: ResolverTypeWrapper<PaginatedTweets>;
   PaginationInput: PaginationInput;
   Int: ResolverTypeWrapper<Scalars['Int']>;
   Query: ResolverTypeWrapper<{}>;
   SignupInput: SignupInput;
   Tweet: ResolverTypeWrapper<Tweet>;
-  TweetResponse: ResolverTypeWrapper<TweetResponse>;
   User: ResolverTypeWrapper<User>;
 };
 
@@ -189,12 +197,12 @@ export type ResolversParentTypes = {
   String: Scalars['String'];
   Boolean: Scalars['Boolean'];
   ID: Scalars['ID'];
+  PaginatedTweets: PaginatedTweets;
   PaginationInput: PaginationInput;
   Int: Scalars['Int'];
   Query: {};
   SignupInput: SignupInput;
   Tweet: Tweet;
-  TweetResponse: TweetResponse;
   User: User;
 };
 
@@ -210,6 +218,12 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   deleteTweet?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType, RequireFields<MutationDeleteTweetArgs, 'tweetId'>>;
 };
 
+export type PaginatedTweetsResolvers<ContextType = any, ParentType extends ResolversParentTypes['PaginatedTweets'] = ResolversParentTypes['PaginatedTweets']> = {
+  tweets?: Resolver<Array<ResolversTypes['Tweet']>, ParentType, ContextType>;
+  hasMore?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   me?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
 };
@@ -219,13 +233,8 @@ export type TweetResolvers<ContextType = any, ParentType extends ResolversParent
   text?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   creatorId?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   creator?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
+  replies?: Resolver<Maybe<ResolversTypes['PaginatedTweets']>, ParentType, ContextType, RequireFields<TweetRepliesArgs, 'input'>>;
   createdAt?: Resolver<ResolversTypes['Date'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type TweetResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['TweetResponse'] = ResolversParentTypes['TweetResponse']> = {
-  tweets?: Resolver<Array<ResolversTypes['Tweet']>, ParentType, ContextType>;
-  hasMore?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -233,7 +242,8 @@ export type UserResolvers<ContextType = any, ParentType extends ResolversParentT
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   username?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  tweets?: Resolver<Maybe<ResolversTypes['TweetResponse']>, ParentType, ContextType, RequireFields<UserTweetsArgs, 'input'>>;
+  profile?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  tweets?: Resolver<Maybe<ResolversTypes['PaginatedTweets']>, ParentType, ContextType, RequireFields<UserTweetsArgs, 'input'>>;
   createdAt?: Resolver<ResolversTypes['Date'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
@@ -241,9 +251,9 @@ export type UserResolvers<ContextType = any, ParentType extends ResolversParentT
 export type Resolvers<ContextType = any> = {
   Date?: GraphQLScalarType;
   Mutation?: MutationResolvers<ContextType>;
+  PaginatedTweets?: PaginatedTweetsResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Tweet?: TweetResolvers<ContextType>;
-  TweetResponse?: TweetResponseResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
 };
 

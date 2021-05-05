@@ -16,10 +16,7 @@ export const TweetResolver: Resolvers<Context> = {
       const error = validateTweet(text);
       if (error) throw new UserInputError(error);
       return prisma.tweet.create({
-        data: {
-          text,
-          creatorId,
-        },
+        data: { text, creatorId },
       });
     },
     deleteTweet: async (_, { tweetId }, { req, prisma }) => {
