@@ -8,11 +8,20 @@ generator client {
 }
 
 model User {
-  id       String   @id @default(cuid())
-  email    String   @unique
-  username String   @unique
-  joined   DateTime @default(now())
-  password String
+  id        String   @id @default(cuid())
+  email     String   @unique
+  username  String   @unique
+  tweets    Tweet[]
+  createdAt DateTime @default(now())
+  password  String
+}
+
+model Tweet {
+  id        String   @id @default(cuid())
+  text      String
+  creator   User     @relation(fields: [creatorId], references: [id])
+  creatorId String
+  createdAt DateTime @default(now())
 }
 
 model Session {

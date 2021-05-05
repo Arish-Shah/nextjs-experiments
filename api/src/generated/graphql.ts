@@ -20,6 +20,8 @@ export type Mutation = {
   signup: User;
   signin: User;
   signout: Scalars['Boolean'];
+  createTweet: Tweet;
+  deleteTweet: Scalars['Boolean'];
 };
 
 
@@ -33,6 +35,21 @@ export type MutationSigninArgs = {
   password: Scalars['String'];
 };
 
+
+export type MutationCreateTweetArgs = {
+  text: Scalars['String'];
+};
+
+
+export type MutationDeleteTweetArgs = {
+  tweetId: Scalars['ID'];
+};
+
+export type PaginationInput = {
+  take: Scalars['Int'];
+  cursor?: Maybe<Scalars['ID']>;
+};
+
 export type Query = {
   __typename?: 'Query';
   me?: Maybe<User>;
@@ -44,12 +61,33 @@ export type SignupInput = {
   password: Scalars['String'];
 };
 
+export type Tweet = {
+  __typename?: 'Tweet';
+  id: Scalars['ID'];
+  text: Scalars['String'];
+  creatorId: Scalars['String'];
+  creator?: Maybe<User>;
+  createdAt: Scalars['Date'];
+};
+
+export type TweetResponse = {
+  __typename?: 'TweetResponse';
+  tweets: Array<Tweet>;
+  hasMore: Scalars['Boolean'];
+};
+
 export type User = {
   __typename?: 'User';
   id: Scalars['ID'];
   email: Scalars['String'];
   username: Scalars['String'];
-  joined: Scalars['Date'];
+  tweets?: Maybe<TweetResponse>;
+  createdAt: Scalars['Date'];
+};
+
+
+export type UserTweetsArgs = {
+  input: PaginationInput;
 };
 
 
@@ -134,10 +172,14 @@ export type ResolversTypes = {
   Mutation: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  ID: ResolverTypeWrapper<Scalars['ID']>;
+  PaginationInput: PaginationInput;
+  Int: ResolverTypeWrapper<Scalars['Int']>;
   Query: ResolverTypeWrapper<{}>;
   SignupInput: SignupInput;
+  Tweet: ResolverTypeWrapper<Tweet>;
+  TweetResponse: ResolverTypeWrapper<TweetResponse>;
   User: ResolverTypeWrapper<User>;
-  ID: ResolverTypeWrapper<Scalars['ID']>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -146,10 +188,14 @@ export type ResolversParentTypes = {
   Mutation: {};
   String: Scalars['String'];
   Boolean: Scalars['Boolean'];
+  ID: Scalars['ID'];
+  PaginationInput: PaginationInput;
+  Int: Scalars['Int'];
   Query: {};
   SignupInput: SignupInput;
+  Tweet: Tweet;
+  TweetResponse: TweetResponse;
   User: User;
-  ID: Scalars['ID'];
 };
 
 export interface DateScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Date'], any> {
@@ -160,17 +206,35 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   signup?: Resolver<ResolversTypes['User'], ParentType, ContextType, RequireFields<MutationSignupArgs, 'input'>>;
   signin?: Resolver<ResolversTypes['User'], ParentType, ContextType, RequireFields<MutationSigninArgs, 'username' | 'password'>>;
   signout?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  createTweet?: Resolver<ResolversTypes['Tweet'], ParentType, ContextType, RequireFields<MutationCreateTweetArgs, 'text'>>;
+  deleteTweet?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType, RequireFields<MutationDeleteTweetArgs, 'tweetId'>>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   me?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
 };
 
+export type TweetResolvers<ContextType = any, ParentType extends ResolversParentTypes['Tweet'] = ResolversParentTypes['Tweet']> = {
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  text?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  creatorId?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  creator?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
+  createdAt?: Resolver<ResolversTypes['Date'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type TweetResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['TweetResponse'] = ResolversParentTypes['TweetResponse']> = {
+  tweets?: Resolver<Array<ResolversTypes['Tweet']>, ParentType, ContextType>;
+  hasMore?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   username?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  joined?: Resolver<ResolversTypes['Date'], ParentType, ContextType>;
+  tweets?: Resolver<Maybe<ResolversTypes['TweetResponse']>, ParentType, ContextType, RequireFields<UserTweetsArgs, 'input'>>;
+  createdAt?: Resolver<ResolversTypes['Date'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -178,6 +242,8 @@ export type Resolvers<ContextType = any> = {
   Date?: GraphQLScalarType;
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  Tweet?: TweetResolvers<ContextType>;
+  TweetResponse?: TweetResponseResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
 };
 

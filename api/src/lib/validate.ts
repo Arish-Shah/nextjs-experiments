@@ -13,3 +13,9 @@ export const validateSignup = (input: SignupInput) => {
     return "Password must be min 6 characters";
   }
 };
+
+export const validateTweet = (text: string) => {
+  if (text.length === 0 || text.length > 140) {
+    return "Tweet must be 1-140 characters";
+  }
+};

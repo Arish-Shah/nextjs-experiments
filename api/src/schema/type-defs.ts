@@ -9,19 +9,40 @@ export const typeDefs = gql`
     signup(input: SignupInput!): User!
     signin(username: String!, password: String!): User!
     signout: Boolean!
+    createTweet(text: String!): Tweet!
+    deleteTweet(tweetId: ID!): Boolean!
   }
 
   type User {
     id: ID!
     email: String!
     username: String!
-    joined: Date!
+    tweets(input: PaginationInput!): TweetResponse
+    createdAt: Date!
+  }
+
+  type Tweet {
+    id: ID!
+    text: String!
+    creatorId: String!
+    creator: User
+    createdAt: Date!
+  }
+
+  type TweetResponse {
+    tweets: [Tweet!]!
+    hasMore: Boolean!
   }
 
   input SignupInput {
     email: String!
     username: String!
     password: String!
+  }
+
+  input PaginationInput {
+    take: Int!
+    cursor: ID
   }
 
   scalar Date
