@@ -8,26 +8,25 @@ generator client {
 }
 
 model User {
-  id        String   @id @default(cuid())
+  id        Int      @id @default(autoincrement())
   email     String   @unique
   username  String   @unique
-  picture   String?
-  tweets    Tweet[]
-  createdAt DateTime @default(now())
+  name      String?
+  web       String?
+  bio       String?
+  location  String?
+  language  String   @default("en")
   password  String
-}
+  createdAt DateTime @default(now()) @map("created_at")
 
-model Tweet {
-  id        String   @id @default(cuid())
-  text      String
-  creator   User     @relation(fields: [creatorId], references: [id])
-  creatorId String
-  createdAt DateTime @default(now())
+  @@map("users")
 }
 
 model Session {
   id        String   @id
   sid       String   @unique
   data      String
-  expiresAt DateTime
+  expiresAt DateTime @map("expires_at")
+
+  @@map("sessions")
 }

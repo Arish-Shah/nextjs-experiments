@@ -1,10 +1,10 @@
-import { SignupInput } from "../generated/graphql";
+import { SignupInput } from "../types/Input";
 
 export const validateSignup = (input: SignupInput) => {
   if (!/\S+@\S+\.\S+/.test(input.email)) {
     return "Incorrect email";
   }
-  if (/^[a-zA-Z0-9_]{1,15}$/.test(input.username)) {
+  if (!/^[a-zA-Z0-9_]{1,15}$/.test(input.username)) {
     return "Invalid username";
   }
   if (input.password.length < 4) {

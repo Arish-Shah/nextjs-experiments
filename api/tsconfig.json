@@ -1,14 +1,19 @@
 {
   "compilerOptions": {
-    "lib": ["esnext", "dom"],
+    "lib": ["es2018", "esnext.asynciterable"],
+    "target": "es2018",
     "rootDir": "src",
     "outDir": "dist",
     "strict": true,
+    "strictPropertyInitialization": false,
     "sourceMap": false,
     "esModuleInterop": true,
     "removeComments": true,
     "module": "commonjs",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true
   },
   "include": ["src"],
   "exclude": ["node_modules"]

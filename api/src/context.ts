@@ -3,6 +3,12 @@ import { Request, Response } from "express";
 
 import prisma from "./lib/prisma";
 
+declare module "express-session" {
+  interface Session {
+    userId: number;
+  }
+}
+
 interface ExpressContext {
   req: Request;
   res: Response;

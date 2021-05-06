@@ -1,12 +1,13 @@
-import "dotenv/config";
+import "reflect-metadata";
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import session from "express-session";
 import { PrismaSessionStore } from "@quixo3/prisma-session-store";
+import "dotenv/config";
 
+import prisma from "./lib/prisma";
 import { schema } from "./schema";
 import { context } from "./context";
-import prisma from "./lib/prisma";
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.use(
 const server = new ApolloServer({
   schema,
   context,
+  tracing: process.env.NODE_ENV === "development",
 });
 
 server.applyMiddleware({ app });
