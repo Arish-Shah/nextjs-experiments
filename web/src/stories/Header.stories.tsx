@@ -10,7 +10,9 @@ export default {
 const Template: Story<HeaderProps> = (args) => <Header {...args} />;
 
 export const SignedIn = Template.bind({});
-SignedIn.args = {};
+SignedIn.args = {
+  me: "tom",
+};
 
 export const SignedOut = Template.bind({});
 SignedOut.args = {};

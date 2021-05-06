@@ -1,0 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  color: #333;
+  font: 14.4px "Lucida Grande", sans-serif;
+}
