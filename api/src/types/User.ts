@@ -1,5 +1,7 @@
 import { Field, ID, ObjectType } from "type-graphql";
 
+import { Design } from "./Design";
+
 @ObjectType()
 export class User {
   @Field(() => ID)
@@ -10,6 +12,9 @@ export class User {
 
   @Field()
   username: string;
+
+  @Field()
+  picture: string;
 
   @Field(() => String, { nullable: true })
   name: string | null;
@@ -28,4 +33,8 @@ export class User {
 
   @Field()
   createdAt: Date;
+
+  @Field()
+  design?: Design;
+  designId: number;
 }

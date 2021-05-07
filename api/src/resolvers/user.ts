@@ -1,4 +1,12 @@
-import { Arg, Ctx, Mutation, Query, Resolver } from "type-graphql";
+import {
+  Arg,
+  Ctx,
+  FieldResolver,
+  Mutation,
+  Query,
+  Resolver,
+  Root,
+} from "type-graphql";
 import { ApolloError, UserInputError } from "apollo-server-express";
 import { hash, compare } from "bcryptjs";
 
@@ -17,8 +25,18 @@ export class UserResolver {
     });
   }
 
+  @FieldResolver()
+  picture(@Root() parent: User) {
+    return process.env.URL + "/images/profile/" + parent.picture;
+  }
+
+  @FieldResolver()
+  design(@Root() parent: User, @Ctx() { prisma }: Context) {
+    return prisma.design.findUnique({ where: { id: parent.designId } });
+  }
+
   @Query(() => Boolean)
-  async isAvailable(
+  async checkUsername(
     @Arg("username") username: string,
     @Ctx() { prisma }: Context
   ): Promise<boolean> {

@@ -11,15 +11,32 @@ model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   username  String   @unique
+  picture   String   @default("default.png")
   name      String?
   web       String?
   bio       String?
   location  String?
   language  String   @default("en")
+  design    Design   @relation(fields: [designId], references: [id])
+  designId  Int      @default(1)
   password  String
   createdAt DateTime @default(now()) @map("created_at")
 
   @@map("users")
+}
+
+model Design {
+  id            Int     @id @default(autoincrement())
+  image         String
+  background    String
+  text          String
+  links         String
+  sidebar       String
+  sidebarBorder String  @map("sidebar_border")
+  repeat        Boolean @default(true)
+  users         User[]
+
+  @@map("designs")
 }
 
 model Session {

@@ -3,6 +3,7 @@ import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import session from "express-session";
 import { PrismaSessionStore } from "@quixo3/prisma-session-store";
+import path from "path";
 import "dotenv/config";
 
 import prisma from "./lib/prisma";
@@ -10,6 +11,8 @@ import { schema } from "./schema";
 import { context } from "./context";
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, "static")));
 
 app.use(
   session({
