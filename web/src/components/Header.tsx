@@ -2,49 +2,89 @@ import Image from "next/image";
 import Link from "next/link";
 
 export interface HeaderProps {
-  navigation: boolean;
-  color?: string;
+  withLang?: boolean;
+  withNav?: boolean;
   me?: string;
 }
 
-const SignedInNavContent = () => (
-  <>
-    <Link href="/signin">
-      <a>Login</a>
-    </Link>
-    {" / "}
-    <Link href="/signup">
-      <a>Join Twitter!</a>
-    </Link>
-  </>
-);
-
-const SignedOutNavContent = ({ me }: { me: string }) => {
-  const links = [
-    { text: "Home", href: "/home" },
-    { text: "Profile", href: "/" + me },
+export const Header: React.FC<HeaderProps> = ({ withLang, withNav, me }) => {
+  const links: { text: string; href: string }[] = [
+    { text: "Home", href: "/" },
+    { text: "Profile", href: `/${me}` },
     { text: "Find People", href: "/find" },
-    { text: "Settings", href: `/${me}/settings` },
-    { text: "Help", href: `/help` },
-    { text: "Sign out", href: "/signout" },
+    { text: "Settings", href: "/account/settings" },
+    { text: "Help", href: "/help" },
+    { text: "Sign out", href: "/sign-out" },
   ];
 
-  return (
-    <div className="links">
-      {links.map((link) => (
-        <Link key={link.text} href={link.href}>
-          <a>{link.text}</a>
-        </Link>
-      ))}
+  const navContent = (
+    <>
+      {me ? (
+        links.map((link) => (
+          <Link key={link.text} href={link.href}>
+            <a className="in">{link.text}</a>
+          </Link>
+        ))
+      ) : (
+        <>
+          <Link href="/login">
+            <a>Login</a>
+          </Link>
+          {" / "}
+          <Link href="/signup">
+            <a>Join Twitter!</a>
+          </Link>
+        </>
+      )}
+      <style jsx>{`
+        a {
+          font: 12.6px "Lucida Grande", sans-serif;
+          text-decoration: none;
+          color: #0084b4;
+        }
+        a.in {
+          margin: 0 5px;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+        a:first-of-type {
+          margin-left: 0;
+        }
+        a:last-of-type {
+          margin-right: 0;
+        }
+      `}</style>
+    </>
+  );
+
+  const dropdown = (
+    <select>
+      <option>Select Language...</option>
+      <option>English</option>
+      <style jsx>{`
+        select {
+          border: 1px solid #aaa;
+          padding: 4px 2px;
+        }
+      `}</style>
+    </select>
+  );
+
+  const nav = (
+    <div className="navigation">
+      {navContent}
+      <style jsx>{`
+        .navigation {
+          padding: 7px 10px;
+          background: #fff;
+          border-radius: 5px;
+          margin-top: 9px;
+        }
+      `}</style>
     </div>
   );
-};
 
-export const Header: React.FC<HeaderProps> = ({
-  navigation,
-  color = "#0000ff",
-  me,
-}) => {
   return (
     <header>
       <div className="wrapper">
@@ -52,52 +92,19 @@ export const Header: React.FC<HeaderProps> = ({
           <a title="Twitter: home">
             <Image
               src="/assets/twitter.png"
-              width="175px"
-              height="41px"
+              height={41}
+              width={175}
               draggable={false}
             />
           </a>
         </Link>
-        {navigation && (
-          <div className="navigation">
-            {me ? <SignedOutNavContent me={me} /> : <SignedInNavContent />}
-          </div>
-        )}
+        {withLang ? dropdown : withNav ? nav : ""}
       </div>
       <style jsx>{`
         .wrapper {
           display: flex;
           justify-content: space-between;
-          align-items: center;
-        }
-
-        .navigation {
-          font: 12.6px/1 "Lucida Grande", sans-serif;
-          background: #fff;
-          padding: 8px 10px;
-          border-radius: 5px;
-          margin-top: 5px;
-        }
-
-        .navigation a {
-          color: ${color};
-          text-decoration: none;
-        }
-
-        .navigation a:hover {
-          text-decoration: underline;
-        }
-
-        .navigation .links a {
-          padding: 0 5px;
-        }
-
-        .navigation .links a:first-of-type {
-          padding-left: 0px;
-        }
-
-        .navigation .links a:last-of-type {
-          padding-right: 0px;
+          align-items: start;
         }
       `}</style>
     </header>

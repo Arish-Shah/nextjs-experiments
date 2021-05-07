@@ -1,7 +1,9 @@
-const Index: React.FC = () => {
+import { Header } from "../components/Header";
+
+const Index = () => {
   return (
     <main>
-      <h1>Hello World</h1>
+      <Header withNav me="arish" />
     </main>
   );
 };
