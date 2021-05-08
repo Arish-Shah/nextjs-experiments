@@ -16,7 +16,7 @@ export const Page: React.FC<PageProps> = ({ children, ...props }) => {
   return (
     <Wrapper>
       <Header lang={props.lang} nav={props.nav} me={props.me} />
-      <Body mt={props.mt || "15px"} mb={props.mb || "15px"}>
+      <Body mt={props.mt} mb={props.mb}>
         {children}
       </Body>
       <Footer />

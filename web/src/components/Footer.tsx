@@ -1,20 +1,23 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export interface FooterProps {}
 
 export const Footer: React.FC<FooterProps> = () => {
-  const links: { text: string; href: string }[] = [
+  const router = useRouter();
+
+  const links: { text: string; href: string; altText?: string }[] = [
     { text: "About Us", href: "/about#about" },
     { text: "Contact", href: "/about#contact" },
     { text: "Blog", href: "https://blog.twitter.com" },
     { text: "Status", href: "https://status.twitter.com" },
-    { text: "Apps", href: "/downloads" },
+    { text: "Downloads", href: "/downloads" },
     { text: "API", href: "https://apiwiki.twitter.com" },
     { text: "Search", href: "https://search.twitter.com" },
     { text: "Help", href: "https://help.twitter.com" },
     { text: "Jobs", href: "/jobs" },
-    { text: "Terms", href: "/terms" },
+    { text: "Terms", href: "/tos", altText: "TOS" },
     { text: "Privacy", href: "/privacy" },
   ];
 
@@ -24,9 +27,13 @@ export const Footer: React.FC<FooterProps> = () => {
         <ListItem>&copy; 2008 Twitter</ListItem>
         {links.map((link, i) => (
           <ListItem key={i}>
-            <Link href={link.href} passHref>
-              <Anchor>{link.text}</Anchor>
-            </Link>
+            {router.pathname === link.href ? (
+              link.altText || link.text
+            ) : (
+              <Link href={link.href} passHref>
+                <Anchor>{link.text}</Anchor>
+              </Link>
+            )}
           </ListItem>
         ))}
       </UnorderedList>
@@ -39,7 +46,8 @@ const StyledFooter = styled.footer`
   background: #fff;
   text-align: center;
   border-radius: 5px;
-  font: 12px/1 "Lucida Grande", sans-serif;
+  margin-bottom: 15px;
+  line-height: 1;
 `;
 
 const UnorderedList = styled.ul`
@@ -51,7 +59,7 @@ const UnorderedList = styled.ul`
 `;
 
 const ListItem = styled.li`
-  margin: 0 4px;
+  margin: 0 5px;
 `;
 
 const Anchor = styled.a`

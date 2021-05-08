@@ -83,12 +83,11 @@ const Select = styled.select`
   margin-top: 1px;
 `;
 
-const Navigation = styled.div`
+const Navigation = styled.nav`
   padding: 8px 10px;
   background: #fff;
   border-radius: 5px;
   margin-top: 9px;
-  font: 12.6px/1 "Lucida Grande", sans-serif;
 `;
 
 const Anchor = styled.a`

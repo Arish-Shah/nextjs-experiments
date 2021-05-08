@@ -3,6 +3,7 @@ import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import session from "express-session";
 import { PrismaSessionStore } from "@quixo3/prisma-session-store";
+import cors from "cors";
 import path from "path";
 import "dotenv/config";
 
@@ -35,13 +36,25 @@ app.use(
   })
 );
 
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+  })
+);
+
+app.use((req, res, next) => {
+  console.log(req.session);
+  next();
+});
+
 const server = new ApolloServer({
   schema,
   context,
   tracing: process.env.NODE_ENV === "development",
 });
 
-server.applyMiddleware({ app });
+server.applyMiddleware({ app, cors: false });
 
 app.listen(process.env.PORT, () => {
   console.log("🚀 Server running on http://localhost:4000/graphql");

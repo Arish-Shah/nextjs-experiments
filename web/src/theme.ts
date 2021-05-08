@@ -10,22 +10,19 @@ export const theme = {
   repeat: false,
 };
 
-type Theme = {
-  theme: typeof theme;
-};
-
-export const GlobalStyles = createGlobalStyle<Theme>`
+export const GlobalStyles = createGlobalStyle`
   * {
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
   }
 
   body {
-    padding: 0;
-    margin: 0;
-    font: 14.4px "Lucida Grande", sans-serif;
+    color: ${({ theme }) => theme.text};
     background: 
     ${({ theme }) => theme.background} url(${({ theme }) => theme.image}) 
     fixed ${({ theme }) => (theme.repeat ? "repeat" : "no-repeat")} top left;
+    font: .75em/1.5 'Lucida Grande',  sans-serif;
   }
 
   a {

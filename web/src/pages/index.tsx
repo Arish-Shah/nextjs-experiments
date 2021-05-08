@@ -4,10 +4,11 @@ import { Page } from "../components/Page";
 
 const Index = () => {
   return (
-    <Page mt="12px">
+    <Page lang>
       <Head>
         <title>Twitter: What are you doing?</title>
       </Head>
+      this is index page
     </Page>
   );
 };
