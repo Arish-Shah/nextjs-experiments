@@ -6,9 +6,7 @@ export default {
   component: Body,
 } as Meta;
 
-const Template: Story<BodyProps> = (args) => (
-  <Body {...args}>does thiswork?</Body>
-);
+const Template: Story<BodyProps> = (args) => <Body {...args}>Default</Body>;
 
 export const Default = Template.bind({});
 Default.args = {};

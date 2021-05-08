@@ -14,7 +14,7 @@ export const Body: React.FC<BodyProps> = ({ mt, mb, children }) => {
   );
 };
 
-const Main = styled.main`
+const Main = styled.main<BodyProps>`
   font: 14.4px/1.5 "Lucida Grande", sans-serif;
   margin-top: ${(props) => props.mt ?? 0};
   margin-bottom: ${(props) => props.mb ?? 0};

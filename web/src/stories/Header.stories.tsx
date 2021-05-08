@@ -8,6 +8,14 @@ export default {
 
 const Template: Story<HeaderProps> = (args) => <Header {...args} />;
 
+export const LogoOnly = Template.bind({});
+LogoOnly.args = {};
+
+export const LanguageDropdown = Template.bind({});
+LanguageDropdown.args = {
+  lang: true,
+};
+
 export const SignedIn = Template.bind({});
 SignedIn.args = {
   me: "tom",

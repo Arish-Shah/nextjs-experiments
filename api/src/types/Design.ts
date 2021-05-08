@@ -22,4 +22,7 @@ export class Design {
 
   @Field()
   sidebarBorder: string;
+
+  @Field()
+  repeat: boolean;
 }

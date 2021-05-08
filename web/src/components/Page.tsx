@@ -5,15 +5,18 @@ import { Body } from "./Body";
 import { Footer } from "./Footer";
 
 export interface PageProps {
-  lang?: boolean;
   nav?: boolean;
+  lang?: boolean;
+  me?: string;
+  mt?: string;
+  mb?: string;
 }
 
-export const Page: React.FC<PageProps> = ({ children, lang, nav }) => {
+export const Page: React.FC<PageProps> = ({ children, ...props }) => {
   return (
     <Wrapper>
-      <Header lang={lang} nav={nav} />
-      <Body mt="15px" mb="15px">
+      <Header lang={props.lang} nav={props.nav} me={props.me} />
+      <Body mt={props.mt || "15px"} mb={props.mb || "15px"}>
         {children}
       </Body>
       <Footer />

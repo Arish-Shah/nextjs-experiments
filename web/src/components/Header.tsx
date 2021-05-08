@@ -55,9 +55,9 @@ export const Header: React.FC<HeaderProps> = ({ lang, nav, me }) => {
         <Link href="/">
           <a title="Twitter: home">
             <Image
-              src="/assets/twitter.png"
-              height={41}
-              width={175}
+              src={`/assets/twitter${lang ? "" : "-small"}.png`}
+              height={lang ? 49 : 41}
+              width={lang ? 210 : 175}
               draggable={false}
             />
           </a>
@@ -76,20 +76,23 @@ const Wrapper = styled.div`
 
 const Select = styled.select`
   border: 1px solid #aaa;
-  padding: 4px 2px;
+  padding: 0 2px;
+  width: 146.8px;
+  height: 27px;
+  margin-right: 3px;
+  margin-top: 1px;
 `;
 
 const Navigation = styled.div`
-  padding: 5px 10px;
+  padding: 8px 10px;
   background: #fff;
   border-radius: 5px;
   margin-top: 9px;
+  font: 12.6px/1 "Lucida Grande", sans-serif;
 `;
 
 const Anchor = styled.a`
-  font: 12.6px/1 "Lucida Grande", sans-serif;
   text-decoration: none;
-  color: #0084b4;
   &.in {
     margin: 0 4px;
   }
