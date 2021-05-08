@@ -4,7 +4,7 @@ export const designs: Design[] = [
   {
     id: 1,
     image: "theme1.gif",
-    background: "#00aced",
+    background: "#9ae4e8",
     text: "#333333",
     links: "#0084b4",
     sidebar: "#dfc",

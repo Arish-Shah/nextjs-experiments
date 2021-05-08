@@ -1,11 +1,7 @@
-import { Header } from "../components/Header";
+import { Page } from "../components/Page";
 
 const Index = () => {
-  return (
-    <main>
-      <Header withNav me="arish" />
-    </main>
-  );
+  return <Page nav>this is whack</Page>;
 };
 
 export default Index;

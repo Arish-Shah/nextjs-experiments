@@ -11,10 +11,10 @@ const Template: Story<HeaderProps> = (args) => <Header {...args} />;
 export const SignedIn = Template.bind({});
 SignedIn.args = {
   me: "tom",
-  withNav: true,
+  nav: true,
 };
 
 export const SignedOut = Template.bind({});
 SignedOut.args = {
-  withNav: true,
+  nav: true,
 };
