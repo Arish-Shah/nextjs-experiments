@@ -43,11 +43,6 @@ app.use(
   })
 );
 
-app.use((req, res, next) => {
-  console.log(req.session);
-  next();
-});
-
 const server = new ApolloServer({
   schema,
   context,

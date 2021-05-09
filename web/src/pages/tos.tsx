@@ -2,14 +2,18 @@ import { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 
+import { withApollo } from "../lib/withApollo";
 import { Page } from "../components/Page";
 import { Content } from "../components/Content";
 import { Sidebar } from "../components/Sidebar";
 import { SidebarSection } from "../components/Sidebar/SidebarSection";
+import { useMeQuery } from "../generated/graphql";
 
 const Tos: NextPage = () => {
+  const { data } = useMeQuery();
+
   return (
-    <Page nav>
+    <Page nav me={data?.me?.username}>
       <Head>
         <title>Twitter / Twitter Terms of Service</title>
       </Head>
@@ -205,4 +209,4 @@ const Tos: NextPage = () => {
   );
 };
 
-export default Tos;
+export default withApollo({ ssr: true })(Tos);

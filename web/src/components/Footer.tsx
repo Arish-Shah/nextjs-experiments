@@ -1,13 +1,10 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 export interface FooterProps {}
 
 export const Footer: React.FC<FooterProps> = () => {
-  const router = useRouter();
-
-  const links: { text: string; href: string; altText?: string }[] = [
+  const links: { text: string; href: string }[] = [
     { text: "About Us", href: "/about#about" },
     { text: "Contact", href: "/about#contact" },
     { text: "Blog", href: "https://blog.twitter.com" },
@@ -17,7 +14,7 @@ export const Footer: React.FC<FooterProps> = () => {
     { text: "Search", href: "https://search.twitter.com" },
     { text: "Help", href: "https://help.twitter.com" },
     { text: "Jobs", href: "/jobs" },
-    { text: "Terms", href: "/tos", altText: "TOS" },
+    { text: "Terms", href: "/tos" },
     { text: "Privacy", href: "/privacy" },
   ];
 
@@ -27,13 +24,9 @@ export const Footer: React.FC<FooterProps> = () => {
         <ListItem>&copy; 2008 Twitter</ListItem>
         {links.map((link, i) => (
           <ListItem key={i}>
-            {router.pathname === link.href ? (
-              link.altText || link.text
-            ) : (
-              <Link href={link.href} passHref>
-                <Anchor>{link.text}</Anchor>
-              </Link>
-            )}
+            <Link href={link.href} passHref>
+              <Anchor>{link.text}</Anchor>
+            </Link>
           </ListItem>
         ))}
       </UnorderedList>

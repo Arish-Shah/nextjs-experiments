@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export const theme = {
-  image: "http://localhost:4000/images/bg/theme1.gif",
+  image: "/assets/bg.gif",
   text: "#333333",
   background: "#9ae4e8",
   links: "#0084b4",
