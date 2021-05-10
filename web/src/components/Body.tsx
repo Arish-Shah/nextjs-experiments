@@ -21,7 +21,7 @@ const Main = styled.main<BodyProps>`
 
 const Arrow = styled.div`
   margin-top: 6px;
-  padding-top: 11px;
+  padding-top: 10.5px;
   background: url(/assets/arrow.gif) no-repeat 25px 0;
 `;
 

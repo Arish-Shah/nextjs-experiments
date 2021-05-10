@@ -1,7 +1,7 @@
 import * as nextImage from "next/image";
 import { ThemeProvider } from "styled-components";
 
-import { GlobalStyles, theme } from "../src/theme";
+import { GlobalStyles, theme } from "../src/lib/globalStyles";
 
 export const decorators = [
   (Story) => (

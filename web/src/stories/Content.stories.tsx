@@ -12,4 +12,4 @@ const Template: Story<ContentProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {} as ContentProps;

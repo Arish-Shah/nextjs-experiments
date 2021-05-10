@@ -9,7 +9,7 @@ import { Sidebar } from "../components/Sidebar";
 import { SidebarSection } from "../components/Sidebar/SidebarSection";
 import { useMeQuery } from "../generated/graphql";
 
-const Tos: NextPage = () => {
+const TosPage: NextPage = () => {
   const { data } = useMeQuery();
 
   return (
@@ -209,4 +209,4 @@ const Tos: NextPage = () => {
   );
 };
 
-export default withApollo({ ssr: true })(Tos);
+export default withApollo({ ssr: true })(TosPage);

@@ -9,4 +9,4 @@ export default {
 const Template: Story<FooterProps> = (args) => <Footer {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {} as FooterProps;

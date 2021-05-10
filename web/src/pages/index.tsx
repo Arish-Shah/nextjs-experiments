@@ -1,8 +1,13 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 import { Page } from "../components/Page";
 
-const Index = () => {
+const IndexPage = () => {
+  const router = useRouter();
+
+  console.log(router.query);
+
   return (
     <Page lang>
       <Head>
@@ -13,4 +18,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default IndexPage;

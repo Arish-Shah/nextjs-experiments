@@ -26,6 +26,5 @@ export const Page: React.FC<PageProps> = ({ children, ...props }) => {
 
 const Wrapper = styled.div`
   width: 763px;
-  margin: 0 auto;
-  margin-top: 15px;
+  margin: 15px auto;
 `;

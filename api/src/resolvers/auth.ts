@@ -6,6 +6,7 @@ import { Context } from "../context";
 import { User } from "../types/User";
 import { SignupInput } from "../types/Input";
 import { validateSignup } from "../lib/validate";
+import { CheckUsernameResponse } from "../types/Response";
 
 @Resolver()
 export class AuthResolver {
@@ -17,13 +18,23 @@ export class AuthResolver {
     });
   }
 
-  @Query(() => Boolean)
+  @Query(() => CheckUsernameResponse)
   async checkUsername(
     @Arg("username") username: string,
     @Ctx() { prisma }: Context
-  ): Promise<boolean> {
-    const user = await prisma.user.findUnique({ where: { username } });
-    return !user;
+  ): Promise<CheckUsernameResponse> {
+    if (!username.trim()) {
+      return {
+        message: "Username can't be blank",
+        success: null,
+      };
+    } else {
+      const user = await prisma.user.findUnique({ where: { username } });
+      return {
+        message: !user ? "Available!" : "Not Available!",
+        success: !user,
+      };
+    }
   }
 
   @Mutation(() => User)

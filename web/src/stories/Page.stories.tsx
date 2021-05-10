@@ -12,20 +12,20 @@ const Template: Story<PageProps> = (args) => (
 );
 
 export const LogoOnly = Template.bind({});
-LogoOnly.args = {};
+LogoOnly.args = {} as PageProps;
 
 export const LanguageDropdown = Template.bind({});
 LanguageDropdown.args = {
   lang: true,
-};
+} as PageProps;
 
 export const SignedIn = Template.bind({});
 SignedIn.args = {
   me: "tom",
   nav: true,
-};
+} as PageProps;
 
 export const SignedOut = Template.bind({});
 SignedOut.args = {
   nav: true,
-};
+} as PageProps;

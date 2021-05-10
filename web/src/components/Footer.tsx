@@ -14,7 +14,7 @@ export const Footer: React.FC<FooterProps> = () => {
     { text: "Search", href: "https://search.twitter.com" },
     { text: "Help", href: "https://help.twitter.com" },
     { text: "Jobs", href: "/jobs" },
-    { text: "Terms", href: "/tos" },
+    { text: "TOS", href: "/tos" },
     { text: "Privacy", href: "/privacy" },
   ];
 
@@ -39,7 +39,6 @@ const StyledFooter = styled.footer`
   background: #fff;
   text-align: center;
   border-radius: 5px;
-  margin-bottom: 15px;
   line-height: 1;
 `;
 
@@ -52,7 +51,7 @@ const UnorderedList = styled.ul`
 `;
 
 const ListItem = styled.li`
-  margin: 0 5px;
+  margin: 0 5.5px;
 `;
 
 const Anchor = styled.a`

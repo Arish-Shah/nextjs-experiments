@@ -9,4 +9,4 @@ export default {
 const Template: Story<BodyProps> = (args) => <Body {...args}>Default</Body>;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {} as BodyProps;

@@ -88,6 +88,8 @@ const Navigation = styled.nav`
   background: #fff;
   border-radius: 5px;
   margin-top: 9px;
+  line-height: 1;
+  font-size: 105%;
 `;
 
 const Anchor = styled.a`

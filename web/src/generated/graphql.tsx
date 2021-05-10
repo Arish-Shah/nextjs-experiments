@@ -16,6 +16,12 @@ export type Scalars = {
   DateTime: any;
 };
 
+export type CheckUsernameResponse = {
+  __typename?: 'CheckUsernameResponse';
+  message: Scalars['String'];
+  success?: Maybe<Scalars['Boolean']>;
+};
+
 
 export type Design = {
   __typename?: 'Design';
@@ -31,13 +37,13 @@ export type Design = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  signin: User;
+  login: User;
   signup: User;
   signout: Scalars['Boolean'];
 };
 
 
-export type MutationSigninArgs = {
+export type MutationLoginArgs = {
   password: Scalars['String'];
   username: Scalars['String'];
 };
@@ -50,7 +56,7 @@ export type MutationSignupArgs = {
 export type Query = {
   __typename?: 'Query';
   me?: Maybe<User>;
-  checkUsername: Scalars['Boolean'];
+  checkUsername: CheckUsernameResponse;
 };
 
 
@@ -89,6 +95,19 @@ export type SignupMutation = (
   & { signup: (
     { __typename?: 'User' }
     & Pick<User, 'id' | 'username'>
+  ) }
+);
+
+export type CheckUsernameQueryVariables = Exact<{
+  username: Scalars['String'];
+}>;
+
+
+export type CheckUsernameQuery = (
+  { __typename?: 'Query' }
+  & { checkUsername: (
+    { __typename?: 'CheckUsernameResponse' }
+    & Pick<CheckUsernameResponse, 'message' | 'success'>
   ) }
 );
 
@@ -138,6 +157,42 @@ export function useSignupMutation(baseOptions?: Apollo.MutationHookOptions<Signu
 export type SignupMutationHookResult = ReturnType<typeof useSignupMutation>;
 export type SignupMutationResult = Apollo.MutationResult<SignupMutation>;
 export type SignupMutationOptions = Apollo.BaseMutationOptions<SignupMutation, SignupMutationVariables>;
+export const CheckUsernameDocument = gql`
+    query CheckUsername($username: String!) {
+  checkUsername(username: $username) {
+    message
+    success
+  }
+}
+    `;
+
+/**
+ * __useCheckUsernameQuery__
+ *
+ * To run a query within a React component, call `useCheckUsernameQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCheckUsernameQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCheckUsernameQuery({
+ *   variables: {
+ *      username: // value for 'username'
+ *   },
+ * });
+ */
+export function useCheckUsernameQuery(baseOptions: Apollo.QueryHookOptions<CheckUsernameQuery, CheckUsernameQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<CheckUsernameQuery, CheckUsernameQueryVariables>(CheckUsernameDocument, options);
+      }
+export function useCheckUsernameLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CheckUsernameQuery, CheckUsernameQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<CheckUsernameQuery, CheckUsernameQueryVariables>(CheckUsernameDocument, options);
+        }
+export type CheckUsernameQueryHookResult = ReturnType<typeof useCheckUsernameQuery>;
+export type CheckUsernameLazyQueryHookResult = ReturnType<typeof useCheckUsernameLazyQuery>;
+export type CheckUsernameQueryResult = Apollo.QueryResult<CheckUsernameQuery, CheckUsernameQueryVariables>;
 export const MeDocument = gql`
     query Me {
   me {

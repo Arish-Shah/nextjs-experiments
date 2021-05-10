@@ -7,4 +7,5 @@ import { DesignResolver } from "./resolvers/design";
 export const schema = buildSchemaSync({
   resolvers: [AuthResolver, UserResolver, DesignResolver],
   validate: false,
+  emitSchemaFile: true,
 });

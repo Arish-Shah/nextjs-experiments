@@ -15,4 +15,4 @@ const Template: Story<SidebarProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {} as SidebarProps;
