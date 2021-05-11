@@ -2,6 +2,7 @@ import { Ctx, FieldResolver, Resolver, Root } from "type-graphql";
 
 import { Context } from "../context";
 import { User } from "../types/User";
+import { PaginatedTweets } from "../types/Response";
 
 @Resolver(User)
 export class UserResolver {
@@ -14,4 +15,8 @@ export class UserResolver {
   design(@Root() parent: User, @Ctx() { prisma }: Context) {
     return prisma.design.findUnique({ where: { id: parent.designId } });
   }
+
+  // @todo
+  @FieldResolver(() => PaginatedTweets)
+  async tweets() {}
 }

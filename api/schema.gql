@@ -25,9 +25,15 @@ type Design {
 }
 
 type Mutation {
+  createTweet(parentId: ID, text: String!): Tweet!
   login(password: String!, username: String!): User!
   signout: Boolean!
   signup(input: SignupInput!): User!
+}
+
+type PaginatedTweets {
+  hasMore: Boolean!
+  tweets: [Tweet!]!
 }
 
 type Query {
@@ -41,6 +47,15 @@ input SignupInput {
   username: String!
 }
 
+type Tweet {
+  createdAt: DateTime!
+  creator: User!
+  from: String!
+  id: ID!
+  parent: Tweet
+  text: String!
+}
+
 type User {
   bio: String
   createdAt: DateTime!
@@ -51,6 +66,7 @@ type User {
   location: String
   name: String
   picture: String!
+  tweets: PaginatedTweets!
   username: String!
   web: String
 }

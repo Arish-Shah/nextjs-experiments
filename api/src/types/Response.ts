@@ -1,5 +1,7 @@
 import { Field, ObjectType } from "type-graphql";
 
+import { Tweet } from "./Tweet";
+
 @ObjectType()
 export class CheckUsernameResponse {
   @Field()
@@ -7,4 +9,13 @@ export class CheckUsernameResponse {
 
   @Field(() => Boolean, { nullable: true })
   success: boolean | null;
+}
+
+@ObjectType()
+export class PaginatedTweets {
+  @Field(() => [Tweet])
+  tweets: Tweet[];
+
+  @Field()
+  hasMore: boolean;
 }

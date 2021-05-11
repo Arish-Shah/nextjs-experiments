@@ -19,6 +19,7 @@ model User {
   language  String   @default("en")
   design    Design   @relation(fields: [designId], references: [id])
   designId  Int      @default(1)
+  tweets    Tweet[]
   password  String
   createdAt DateTime @default(now()) @map("created_at")
 
@@ -46,4 +47,18 @@ model Session {
   expiresAt DateTime @map("expires_at")
 
   @@map("sessions")
+}
+
+model Tweet {
+  id        Int      @id @default(autoincrement())
+  text      String
+  creator   User     @relation(fields: [creatorId], references: [id])
+  creatorId Int      @map("creator_id")
+  from      String   @default("web")
+  parent    Tweet?   @relation("TweetReply", fields: [parentId], references: [id])
+  parentId  Int?     @map("parent_id")
+  replies   Tweet[]  @relation("TweetReply")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("tweets")
 }
