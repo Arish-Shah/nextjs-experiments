@@ -1,8 +1,11 @@
+import Content from "../components/layout/Content";
+import Page from "../components/layout/Page";
+
 const Index = () => {
   return (
-    <main>
-      <h1>Hello World</h1>
-    </main>
+    <Page title="Twitter: What are you doing?" lang>
+      <Content>foooo</Content>
+    </Page>
   );
 };
 
