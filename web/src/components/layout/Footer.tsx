@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export interface FooterProps {}
 
-const Footer: React.FC<FooterProps> = () => {
+export const Footer: React.FC<FooterProps> = () => {
   const links: { text: string; href: string }[] = [
     { text: "About Us", href: "/about#about" },
     { text: "Contact", href: "/about#contact" },
@@ -48,8 +48,6 @@ const UnorderedList = styled.ul`
   justify-content: center;
 
   li {
-    padding: 0 4px;
+    padding: 0 5.5px;
   }
 `;
-
-export default Footer;

@@ -6,9 +6,10 @@ import Link from "next/link";
 export interface HeaderProps {
   lang?: boolean;
   me?: string;
+  hideNav?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ lang: language, me }) => {
+export const Header: React.FC<HeaderProps> = ({ lang, me, hideNav }) => {
   const links: { text: string; href: string }[] = [
     { text: "Home", href: "/home" },
     { text: "Profile", href: `/${me}` },
@@ -59,14 +60,14 @@ const Header: React.FC<HeaderProps> = ({ lang: language, me }) => {
         <Link href="/">
           <a title="Twitter: home">
             <Image
-              src={`/assets/twitter${language ? "" : "-small"}.png`}
-              width={language ? 210 : 175}
-              height={language ? 49 : 41}
+              src={`/assets/twitter${lang ? "" : "-small"}.png`}
+              width={lang ? 210 : 175}
+              height={lang ? 49 : 41}
               draggable={false}
             />
           </a>
         </Link>
-        {language ? langDropdown : navigation}
+        {lang ? langDropdown : !hideNav ? navigation : null}
       </Wrapper>
     </header>
   );
@@ -99,5 +100,3 @@ const Select = styled.select`
   padding: 4px 2px;
   border: 1px solid #aaa;
 `;
-
-export default Header;

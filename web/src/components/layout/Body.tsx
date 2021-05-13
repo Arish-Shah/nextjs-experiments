@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export interface BodyProps {}
 
-const Body: React.FC<BodyProps> = ({ children }) => {
+export const Body: React.FC<BodyProps> = ({ children }) => {
   return (
     <Main>
       <Arrow />
@@ -16,8 +16,8 @@ const Main = styled.main`
 `;
 
 const Arrow = styled.div`
-  margin-top: 5px;
-  padding-top: 11px;
+  margin-top: 11px;
+  padding-top: 10.5px;
   background: url(/assets/arrow.gif) no-repeat 25px 0px;
 `;
 
@@ -27,5 +27,3 @@ const Columns = styled.div`
   border-radius: 5px;
   display: flex;
 `;
-
-export default Body;

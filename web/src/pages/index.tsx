@@ -1,7 +1,6 @@
-import Content from "../components/layout/Content";
-import Page from "../components/layout/Page";
+import { Page, Content } from "../components/layout";
 
-const Index = () => {
+const IndexPage = () => {
   return (
     <Page title="Twitter: What are you doing?" lang>
       <Content>foooo</Content>
@@ -9,4 +8,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default IndexPage;
