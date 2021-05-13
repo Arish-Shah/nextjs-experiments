@@ -69,7 +69,7 @@ const LoginPage = () => {
           <h1>Create Your Account</h1>
           <Center>
             <JoinButton>Join!</JoinButton>
-            <p className="complete">
+            <p>
               Already using Twitter
               <br />
               from your phone?{" "}
@@ -95,6 +95,11 @@ const LoginPage = () => {
 
 const Center = styled.div`
   text-align: center;
+
+  p {
+    font-size: 0.9em;
+    margin-top: 1em;
+  }
 `;
 
 export default LoginPage;

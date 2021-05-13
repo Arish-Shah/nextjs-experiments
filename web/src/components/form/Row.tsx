@@ -18,6 +18,7 @@ const TableHead = styled.th`
   text-align: right;
   width: 11.5em;
   font-weight: normal;
+  padding-top: 11px !important;
 
   label {
     white-space: nowrap;
@@ -32,7 +33,14 @@ const TableData = styled.td`
 
   small {
     font-size: 0.97em;
-    margin-left: 3px;
     color: #777;
+
+    &:first-of-type {
+      margin-left: 3px;
+
+      &.no-margin {
+        margin-left: 0;
+      }
+    }
   }
 `;

@@ -24,5 +24,6 @@ const FieldSet = styled.fieldset`
   th,
   td {
     padding: 7px 3px;
+    vertical-align: top;
   }
 `;

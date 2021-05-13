@@ -22,8 +22,6 @@ const Arrow = styled.div`
 `;
 
 const Columns = styled.div`
-  background: #fff;
   overflow: hidden;
-  border-radius: 5px;
   display: flex;
 `;

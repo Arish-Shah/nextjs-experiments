@@ -1,9 +1,9 @@
-import { Page, Content } from "../components/layout";
+import { Page } from "../components/layout";
 
 const IndexPage = () => {
   return (
     <Page title="Twitter: What are you doing?" lang>
-      <Content>foooo</Content>
+      <div>This is not good</div>
     </Page>
   );
 };

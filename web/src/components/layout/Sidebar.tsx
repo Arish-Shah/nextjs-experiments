@@ -5,6 +5,8 @@ export const Sidebar = styled.div`
   line-height: 1.2;
   background-color: ${({ theme }) => theme.sidebar};
   border-left: 1px solid ${({ theme }) => theme.sidebarBorder};
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 `;
 
 export const SidebarSection = styled.div`
@@ -17,8 +19,14 @@ export const SidebarSection = styled.div`
     margin: 10px 0 5px 0;
   }
 
-  .complete {
-    font-size: 0.9em;
-    margin-top: 1em;
+  ol {
+    margin-left: -10px;
+    padding-left: 30px;
+    line-height: 1.4em;
+
+    li {
+      padding-bottom: 8px;
+      width: 140px;
+    }
   }
 `;
