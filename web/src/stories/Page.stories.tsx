@@ -1,7 +1,8 @@
 import { Meta, Story } from "@storybook/react";
-import { Content, Sidebar } from "../components/layout";
 
-import { Page, PageProps } from "../components/layout/Page";
+import { Content } from "@/components/ui/Content";
+import { Sidebar } from "@/components/ui/Sidebar";
+import { Page, PageProps } from "@/layouts/DefaultPage";
 
 export default {
   title: "components/Page",

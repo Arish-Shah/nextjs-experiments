@@ -1,9 +1,9 @@
 import Head from "next/head";
 import styled from "styled-components";
 
-import { Header } from "./Header";
-import { Body } from "./Body";
-import { Footer } from "./Footer";
+import { Header } from "@/components/ui/Header";
+import { Body } from "@/components/ui/Body";
+import { Footer } from "@/components/ui/Footer";
 
 export interface PageProps {
   title?: string;

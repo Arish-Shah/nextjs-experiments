@@ -6,7 +6,6 @@ export const InputButton = styled.button`
   font-size: 1em;
   padding: 4px 8px 4px 8px;
   cursor: pointer;
-
   &:hover {
     background: #999;
   }

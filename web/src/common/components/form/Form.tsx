@@ -20,7 +20,6 @@ export const Form: React.FC<FormProps> = ({ onSubmit, children }) => {
 const FieldSet = styled.fieldset`
   border: 0;
   margin: 10px 0;
-
   th,
   td {
     padding: 7px 3px;

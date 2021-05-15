@@ -19,7 +19,6 @@ const TableHead = styled.th`
   width: 11.5em;
   font-weight: normal;
   padding-top: 11px !important;
-
   label {
     white-space: nowrap;
     font-weight: normal;
@@ -30,14 +29,11 @@ const TableData = styled.td`
   input {
     margin-right: 3px;
   }
-
   small {
     font-size: 0.97em;
     color: #777;
-
     &:first-of-type {
       margin-left: 3px;
-
       &.no-margin {
         margin-left: 0;
       }

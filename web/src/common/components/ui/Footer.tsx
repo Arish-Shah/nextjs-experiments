@@ -46,7 +46,6 @@ const UnorderedList = styled.ul`
   list-style: none;
   display: flex;
   justify-content: center;
-
   li {
     padding: 0 5.5px;
   }

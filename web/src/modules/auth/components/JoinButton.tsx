@@ -7,4 +7,9 @@ export const JoinButton = styled.button`
   padding: 0.3em 2.5em;
   font-weight: bold;
   border: 1px solid black;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #294b60;
+  }
 `;

@@ -1,5 +1,5 @@
-import { DefaultTheme } from "styled-components";
 import create from "zustand";
+import { DefaultTheme } from "styled-components";
 
 type ThemeStore = {
   theme: DefaultTheme;
