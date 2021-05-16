@@ -5,14 +5,17 @@ import { Header } from "@/components/ui/Header";
 import { Body } from "@/components/ui/Body";
 import { Footer } from "@/components/ui/Footer";
 
-export interface PageProps {
+export interface DefaultLayoutProps {
   title?: string;
   me?: string;
-  lang?: boolean;
   hideNav?: boolean;
 }
 
-export const Page: React.FC<PageProps> = ({ title, children, ...props }) => {
+export const DefaultLayout: React.FC<DefaultLayoutProps> = ({
+  title,
+  children,
+  ...props
+}) => {
   return (
     <Container>
       <Head>

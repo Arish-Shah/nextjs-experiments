@@ -49,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({ lang, me, hideNav }) => {
 
   const langDropdown = (
     <Select>
-      <option value="">Select Language... &nbsp;</option>
+      <option value="">Select Language&nbsp;...&nbsp;</option>
       <option value="en">English</option>
     </Select>
   );
@@ -98,4 +98,6 @@ const Links = styled.ul`
 const Select = styled.select`
   padding: 4px 2px;
   border: 1px solid #aaa;
+  margin-top: 2px;
+  margin-right: 2px;
 `;

@@ -15,7 +15,7 @@ const Main = styled.main`
   margin-bottom: 15px;
 `;
 
-const Arrow = styled.div`
+export const Arrow = styled.div`
   margin-top: 11px;
   padding-top: 10.5px;
   background: url(/assets/arrow.gif) no-repeat 25px 0px;

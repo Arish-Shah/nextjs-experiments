@@ -1,13 +1,13 @@
 import Link from "next/link";
 
 import { Sidebar } from "@/components/ui/Sidebar";
-import { Page } from "@/layouts/DefaultPage";
+import { DefaultLayout } from "@/layouts/DefaultLayout";
 import { SidebarSection } from "@/components/ui/SidebarSection";
 import { Container } from "./Container";
 
 export const TermsPage = () => {
   return (
-    <Page title="Twitter / Twitter Terms of Service">
+    <DefaultLayout title="Twitter / Twitter Terms of Service">
       <Container>
         <h2>Terms of Service</h2>
         <p>
@@ -196,6 +196,6 @@ export const TermsPage = () => {
           </ol>
         </SidebarSection>
       </Sidebar>
-    </Page>
+    </DefaultLayout>
   );
 };

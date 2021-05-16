@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-import { Page } from "@/layouts/DefaultPage";
+import { DefaultLayout } from "@/layouts/DefaultLayout";
 import { Container } from "./Container";
 
 export const PrivacyPage = () => {
   return (
-    <Page>
+    <DefaultLayout>
       <Container className="full">
         <h2>Twitter Privacy Policy</h2>
         <p>
@@ -214,6 +214,6 @@ export const PrivacyPage = () => {
           such information from our files.
         </p>
       </Container>
-    </Page>
+    </DefaultLayout>
   );
 };

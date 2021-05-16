@@ -2,29 +2,29 @@ import { Meta, Story } from "@storybook/react";
 
 import { Content } from "@/components/ui/Content";
 import { Sidebar } from "@/components/ui/Sidebar";
-import { Page, PageProps } from "@/layouts/DefaultPage";
+import { DefaultLayout, DefaultLayoutProps } from "@/layouts/DefaultLayout";
 
 export default {
   title: "components/Page",
-  component: Page,
+  component: DefaultLayout,
 } as Meta;
 
-const Template: Story<PageProps> = (args) => (
-  <Page {...args}>
+const Template: Story<DefaultLayoutProps> = (args) => (
+  <DefaultLayout {...args}>
     <Content>Main Content</Content>
     <Sidebar>Sidebar Content</Sidebar>
-  </Page>
+  </DefaultLayout>
 );
 
 export const SignedOut = Template.bind({});
-SignedOut.args = {} as PageProps;
+SignedOut.args = {} as DefaultLayoutProps;
 
 export const SignedIn = Template.bind({});
 SignedIn.args = {
   me: "tom",
-} as PageProps;
+} as DefaultLayoutProps;
 
 export const WithoutNav = Template.bind({});
 WithoutNav.args = {
   hideNav: true,
-} as PageProps;
+} as DefaultLayoutProps;

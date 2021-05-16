@@ -1,9 +1,11 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-export interface FooterProps {}
+export interface FooterProps {
+  borderRadius?: string;
+}
 
-export const Footer: React.FC<FooterProps> = () => {
+export const Footer: React.FC<FooterProps> = ({ borderRadius }) => {
   const links: { text: string; href: string }[] = [
     { text: "About Us", href: "/about#about" },
     { text: "Contact", href: "/about#contact" },
@@ -19,7 +21,7 @@ export const Footer: React.FC<FooterProps> = () => {
   ];
 
   return (
-    <StyledFooter>
+    <StyledFooter borderRadius={borderRadius}>
       <UnorderedList>
         <li>&copy; 2008 Twitter</li>
         {links.map((link, i) => (
@@ -34,10 +36,10 @@ export const Footer: React.FC<FooterProps> = () => {
   );
 };
 
-const StyledFooter = styled.footer`
+const StyledFooter = styled.footer<{ borderRadius?: string }>`
   background: #fff;
   padding: 8px 0;
-  border-radius: 5px;
+  border-radius: ${(props) => props.borderRadius ?? "5px"};
   white-space: nowrap;
   line-height: 1;
 `;

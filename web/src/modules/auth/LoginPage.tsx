@@ -1,7 +1,7 @@
 import { FormEventHandler, useState } from "react";
 import Link from "next/link";
 
-import { Page } from "@/layouts/DefaultPage";
+import { DefaultLayout } from "@/layouts/DefaultLayout";
 import { Content } from "@/components/ui/Content";
 import { Form } from "@/components/form/Form";
 import { Field } from "@/components/form/Field";
@@ -23,7 +23,7 @@ export const LoginPage = () => {
   };
 
   return (
-    <Page>
+    <DefaultLayout>
       <Content>
         <h2>Sign in to Twitter</h2>
         <p>
@@ -99,6 +99,6 @@ export const LoginPage = () => {
           </Center>
         </SidebarSection>
       </Sidebar>
-    </Page>
+    </DefaultLayout>
   );
 };

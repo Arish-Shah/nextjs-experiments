@@ -2,7 +2,7 @@ import { FormEventHandler, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
-import { Page } from "@/layouts/DefaultPage";
+import { DefaultLayout } from "@/layouts/DefaultLayout";
 import { Content } from "@/components/ui/Content";
 import { Form } from "@/components/form/Form";
 import { Field } from "@/components/form/Field";
@@ -21,7 +21,7 @@ export const SignupPage = () => {
   };
 
   return (
-    <Page title="Twitter / Create an Account" hideNav>
+    <DefaultLayout title="Twitter / Create an Account" hideNav>
       <Content>
         <h2>Create a Free Twitter Account</h2>
         <Form onSubmit={handleSubmit}>
@@ -101,7 +101,7 @@ export const SignupPage = () => {
           </p>
         </SidebarSection>
       </Sidebar>
-    </Page>
+    </DefaultLayout>
   );
 };
 
