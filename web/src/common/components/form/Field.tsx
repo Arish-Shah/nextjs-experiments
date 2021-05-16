@@ -35,7 +35,5 @@ export const Field: React.FC<FieldProps> = ({
 };
 
 const Input = styled.input`
-  padding: 4px 2px;
   width: 12.45em;
-  border: 1px solid #aaa;
 `;

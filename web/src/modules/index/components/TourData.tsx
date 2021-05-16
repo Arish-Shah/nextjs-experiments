@@ -34,14 +34,14 @@ const JoinButton = styled.button`
   }
 `;
 
-const Paragraph = styled.p`
+export const Paragraph = styled.p`
   font-size: 1.2em;
   line-height: 1.3;
   color: #000;
   margin: 0 0 1em;
 `;
 
-const UnorderedList = styled.ul`
+export const UnorderedList = styled.ul`
   font-size: 1.2em;
   line-height: 1.3;
   color: #000;

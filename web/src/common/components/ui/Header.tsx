@@ -99,5 +99,5 @@ const Select = styled.select`
   padding: 4px 2px;
   border: 1px solid #aaa;
   margin-top: 2px;
-  margin-right: 2px;
+  margin-right: -5px;
 `;

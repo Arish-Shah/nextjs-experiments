@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
   }
+
   body {
     color: ${({ theme }) => theme.text};
     background: 
@@ -13,11 +14,18 @@ export const GlobalStyle = createGlobalStyle`
     fixed ${({ theme }) => (theme.repeat ? "repeat" : "no-repeat")} top left;
     font: .75em/1.5 'Lucida Grande',  sans-serif;
   }
+
   a {
     color: ${({ theme }) => theme.links};
     text-decoration: none;
   }
+  
   a:hover {
     text-decoration: underline;
+  }
+
+  input {
+    border: 1px solid #aaa;
+    padding: 4px 2px;
   }
 `;

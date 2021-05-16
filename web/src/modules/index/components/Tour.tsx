@@ -3,11 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { TourTypes } from "../TourTypes";
+import { TourType } from "../types/TourType";
 import { tourData } from "./TourData";
 
 export interface TourProps {
-  tourType: TourTypes;
+  tourType: TourType;
 }
 
 export const Tour: React.FC<TourProps> = () => {
