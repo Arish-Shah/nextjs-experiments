@@ -2,11 +2,17 @@ import { NextPage } from "next";
 import Link from "next/link";
 
 import { DefaultLayout } from "@/layouts/DefaultLayout";
+import { useMeQuery } from "@/generated/graphql";
 import { Container } from "./Container";
 
 export const PrivacyPage: NextPage = () => {
+  const { data } = useMeQuery();
+
   return (
-    <DefaultLayout title="Twitter / Twitter Privacy Policy">
+    <DefaultLayout
+      title="Twitter / Twitter Privacy Policy"
+      me={data?.me?.username}
+    >
       <Container className="full">
         <h2>Twitter Privacy Policy</h2>
         <p>

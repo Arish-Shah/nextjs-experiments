@@ -5,10 +5,16 @@ import { Sidebar } from "@/components/ui/Sidebar";
 import { DefaultLayout } from "@/layouts/DefaultLayout";
 import { SidebarSection } from "@/components/ui/SidebarSection";
 import { Container } from "./Container";
+import { useMeQuery } from "@/generated/graphql";
 
 export const TermsPage: NextPage = () => {
+  const { data } = useMeQuery();
+
   return (
-    <DefaultLayout title="Twitter / Twitter Terms of Service">
+    <DefaultLayout
+      title="Twitter / Twitter Terms of Service"
+      me={data?.me?.username}
+    >
       <Container>
         <h2>Terms of Service</h2>
         <p>
