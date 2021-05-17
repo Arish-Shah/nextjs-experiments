@@ -1,3 +1,4 @@
+import { NextPage } from "next";
 import { FormEventHandler, useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
@@ -11,13 +12,14 @@ import { InputButton } from "@/components/button/InputButton";
 import { Sidebar } from "@/components/ui/Sidebar";
 import { SidebarSection } from "@/components/ui/SidebarSection";
 
-export const SignupPage = () => {
+export const SignupPage: NextPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
   const handleSubmit: FormEventHandler = (event) => {
     event.preventDefault();
+    console.log({ username, password, email });
   };
 
   return (

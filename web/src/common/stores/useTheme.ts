@@ -1,12 +1,12 @@
 import create from "zustand";
 import { DefaultTheme } from "styled-components";
 
-type ThemeStore = {
+type ThemeState = {
   theme: DefaultTheme;
   changeTheme: (theme: DefaultTheme) => void;
 };
 
-export const useTheme = create<ThemeStore>((set) => ({
+export const useTheme = create<ThemeState>((set) => ({
   theme: {
     image: "/assets/bg.gif",
     text: "#333333",

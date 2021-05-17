@@ -1,3 +1,4 @@
+import { NextPage } from "next";
 import Link from "next/link";
 
 import { Sidebar } from "@/components/ui/Sidebar";
@@ -5,7 +6,7 @@ import { DefaultLayout } from "@/layouts/DefaultLayout";
 import { SidebarSection } from "@/components/ui/SidebarSection";
 import { Container } from "./Container";
 
-export const TermsPage = () => {
+export const TermsPage: NextPage = () => {
   return (
     <DefaultLayout title="Twitter / Twitter Terms of Service">
       <Container>

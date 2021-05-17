@@ -1,7 +1,8 @@
 import { Fragment } from "react";
 import styled from "styled-components";
-import Image from "next/image";
 import Link from "next/link";
+
+import { Alert } from "../alert/Alert";
 
 export interface HeaderProps {
   lang?: boolean;
@@ -56,10 +57,11 @@ export const Header: React.FC<HeaderProps> = ({ lang, me, hideNav }) => {
 
   return (
     <header>
+      <Alert />
       <Wrapper>
         <Link href="/">
           <a title="Twitter: home">
-            <Image
+            <img
               src={`/assets/twitter${lang ? "" : "-small"}.png`}
               width={lang ? 210 : 175}
               height={lang ? 49 : 41}

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -38,7 +37,7 @@ export const Tour: React.FC<TourProps> = () => {
         </Menu>
       </Title>
       <ImageWrapper>
-        <Image
+        <img
           src={tourData[router.pathname].image}
           width="508"
           height="154"

@@ -1,3 +1,4 @@
+import { NextPage } from "next";
 import { FormEventHandler, useState } from "react";
 import Link from "next/link";
 
@@ -12,7 +13,7 @@ import { SidebarSection } from "@/components/ui/SidebarSection";
 import { JoinButton } from "./components/JoinButton";
 import { Center } from "./components/Center";
 
-export const LoginPage = () => {
+export const LoginPage: NextPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
