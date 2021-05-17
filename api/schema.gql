@@ -26,7 +26,7 @@ type Design {
 
 type Mutation {
   createTweet(parentId: ID, text: String!): Tweet!
-  login(password: String!, username: String!): User!
+  login(password: String!, usernameOrEmail: String!): User!
   signout: Boolean!
   signup(input: SignupInput!): User!
 }

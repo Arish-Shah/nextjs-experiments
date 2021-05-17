@@ -39,12 +39,13 @@ export class AuthResolver {
 
   @Mutation(() => User)
   async login(
-    @Arg("username") username: string,
+    @Arg("usernameOrEmail") usernameOrEmail: string,
     @Arg("password") password: string,
     @Ctx() { req, prisma }: Context
   ): Promise<User> {
+    const key = usernameOrEmail.includes("@") ? "email" : "username";
     const user = await prisma.user.findUnique({
-      where: { username },
+      where: { [key]: usernameOrEmail },
     });
     if (!user) throw new ApolloError("Incorrect username or password");
 
