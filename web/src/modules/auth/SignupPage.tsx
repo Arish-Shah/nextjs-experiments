@@ -10,7 +10,7 @@ import { Field } from "@/components/form/Field";
 import { Row } from "@/components/form/Row";
 import { InputButton } from "@/components/button/InputButton";
 import { Sidebar } from "@/components/ui/Sidebar";
-import { SidebarSection } from "@/components/ui/SidebarSection";
+import { SidebarSection } from "@/components/utils/SidebarSection";
 
 export const SignupPage: NextPage = () => {
   const [username, setUsername] = useState("");

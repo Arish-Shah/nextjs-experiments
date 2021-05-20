@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import { Fragment } from "react";
 
-import { Center } from "@/components/ui/Center";
+import { Center } from "@/components/utils/Center";
 
 interface TourData {
   [key: string]: {

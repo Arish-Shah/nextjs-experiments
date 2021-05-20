@@ -1,3 +1,4 @@
 import { LoginPage } from "@/modules/auth/LoginPage";
+import { withApollo } from "@/utils/withApollo";
 
-export default LoginPage;
+export default withApollo({ ssr: false })(LoginPage);

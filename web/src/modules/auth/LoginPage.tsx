@@ -9,18 +9,34 @@ import { Field } from "@/components/form/Field";
 import { Row } from "@/components/form/Row";
 import { InputButton } from "@/components/button/InputButton";
 import { Sidebar } from "@/components/ui/Sidebar";
-import { SidebarSection } from "@/components/ui/SidebarSection";
+import { SidebarSection } from "@/components/utils/SidebarSection";
 import { JoinButton } from "./components/JoinButton";
 import { Center } from "./components/Center";
+import { useLoginMutation } from "@/generated/graphql";
 
-export const LoginPage: NextPage = () => {
-  const [username, setUsername] = useState("");
+export const LoginPage = () => {
+  const [login] = useLoginMutation({
+    errorPolicy: "all",
+    onCompleted(data) {
+      console.log("onCompleted called", data);
+    },
+    update(cache, { data, errors }) {
+      console.log("update called", { data, errors });
+    },
+  });
+
+  const [usernameOrEmail, setUsernameOrEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
 
   const handleSubmit: FormEventHandler = (event) => {
     event.preventDefault();
-    console.log({ username, password, remember });
+    login({
+      variables: {
+        usernameOrEmail,
+        password,
+      },
+    });
   };
 
   return (
@@ -39,8 +55,8 @@ export const LoginPage: NextPage = () => {
             type="text"
             id="username"
             label="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={usernameOrEmail}
+            onChange={(e) => setUsernameOrEmail(e.target.value)}
             autofocus
           />
           <Field

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { Sidebar } from "@/components/ui/Sidebar";
 import { DefaultLayout } from "@/layouts/DefaultLayout";
-import { SidebarSection } from "@/components/ui/SidebarSection";
+import { SidebarSection } from "@/components/utils/SidebarSection";
 import { Container } from "./Container";
 import { useMeQuery } from "@/generated/graphql";
 
