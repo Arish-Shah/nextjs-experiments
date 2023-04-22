@@ -1,1 +1,1 @@
-# nextjs-graphql-experiments
+# nextjs-experiments

@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "nextjs-graphql-experiments",
-  description: "Next.js GraphQL Experiments",
+  title: "nextjs-experiments",
+  description: "Next.js Experiments",
 };
 
 interface RootLayoutProps {
