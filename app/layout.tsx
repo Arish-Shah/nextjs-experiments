@@ -1,3 +1,4 @@
+import { ClerkProvider } from "@clerk/nextjs/app-beta";
 import "./globals.css";
 
 export const metadata = {
@@ -12,7 +13,9 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <ClerkProvider>
+        <body>{children}</body>
+      </ClerkProvider>
     </html>
   );
 }
