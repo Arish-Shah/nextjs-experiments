@@ -1,9 +1,4 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    appDir: true,
-    serverComponentsExternalPackages: ["bcryptjs"],
-  },
-};
+/** @type {import("next").NextConfig} */
+const nextConfig = {};
 
 module.exports = nextConfig;

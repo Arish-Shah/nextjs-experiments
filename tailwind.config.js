@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import("tailwindcss").Config} */
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -6,7 +6,15 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        "twttr-blue": "#9ae4e8",
+      },
+      backgroundImage: {
+        "twttr-clouds": "url('/images/bg.gif')",
+        "twttr-arr": "url('/images/arr2.gif')",
+      },
+    },
   },
   plugins: [],
 };
