@@ -1,10 +1,8 @@
-import { Header } from "@/components/header";
 import "./globals.css";
-import { Content } from "@/components/content";
 
 export const metadata = {
-  title: "nextjs-experiments",
-  description: "Next.js Experiments",
+  title: "Twitter: What are you doing?",
+  description: "Twitter is a free social messaging utility for staying connected in real-time",
 };
 
 interface RootLayoutProps {
@@ -14,13 +12,8 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className="bg-twttr-blue bg-twttr-clouds bg-fixed bg-left-top bg-no-repeat">
-        <main className="w-[768px] mx-auto py-[15px]">
-          <Header />
-          <Content>
-            {children}
-          </Content>
-        </main>
+      <body className="bg-tw-blue bg-tw-clouds bg-fixed bg-no-repeat bg-left-top">
+        {children}
       </body>
     </html>
   );
