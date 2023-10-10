@@ -1,7 +1,7 @@
-import { Container } from "@/components/container";
-
 export default function Home() {
   return (
-    <Container forIndex={true}>hello world</Container>
+    <main>
+      <h1>hello world</h1>
+    </main>
   );
 }
